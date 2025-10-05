@@ -65,29 +65,49 @@ export default function DashboardPage() {
         <div className="min-h-screen relative bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 text-white">
             <Navbar />
             <main className="container mx-auto px-4 py-28">
-                <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-3xl font-bold tracking-tight">📚 All Books</h2>
+                <div className="mb-8">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <h2 className="text-3xl font-bold tracking-tight">📚 All Books</h2>
 
-                    <div className="flex items-center gap-4">
-                        <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search by title or author" className="bg-white/5 text-white px-3 py-2 rounded-lg w-64" />
+                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
+                            <input
+                                value={q}
+                                onChange={e => setQ(e.target.value)}
+                                placeholder="Search by title or author"
+                                aria-label="Search books"
+                                className="bg-white/5 text-white px-3 py-2 rounded-lg w-full sm:w-64"
+                            />
 
-                        <select value={genre} onChange={e => setGenre(e.target.value)} className="bg-white/5 text-white px-3 py-2 rounded-lg">
-                            <option value="">All genres</option>
-                            {genres.map(g => <option key={g} value={g}>{g}</option>)}
-                        </select>
+                            <select
+                                value={genre}
+                                onChange={e => setGenre(e.target.value)}
+                                aria-label="Filter by genre"
+                                className="bg-white/5 text-white px-3 py-2 rounded-lg w-full sm:w-auto"
+                            >
+                                <option value="">All genres</option>
+                                {genres.map(g => <option key={g} value={g}>{g}</option>)}
+                            </select>
 
-                        <label className="text-sm text-white/80">Sort:</label>
-                        <select value={sort} onChange={(e) => { setSort(e.target.value as any) }} className="bg-white/5 text-white px-3 py-2 rounded-lg">
-                            <option value="year">Published Year</option>
-                            <option value="rating">Average Rating</option>
-                        </select>
+                            <div className="flex items-center gap-2 w-full sm:w-auto">
+                                <label className="text-sm text-white/80">Sort:</label>
+                                <select
+                                    value={sort}
+                                    onChange={(e) => { setSort(e.target.value as any) }}
+                                    aria-label="Sort books"
+                                    className="bg-white/5 text-white px-3 py-2 rounded-lg w-full sm:w-auto"
+                                >
+                                    <option value="year">Published Year</option>
+                                    <option value="rating">Average Rating</option>
+                                </select>
+                            </div>
 
-                        <button
-                            onClick={() => setAdding(true)}
-                            className="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 rounded-lg shadow-md transition"
-                        >
-                            + Add Book
-                        </button>
+                            <button
+                                onClick={() => setAdding(true)}
+                                className="px-5 py-2.5 bg-rose-600 hover:bg-rose-700 rounded-lg shadow-md transition w-full sm:w-auto"
+                            >
+                                + Add Book
+                            </button>
+                        </div>
                     </div>
                 </div>
 
